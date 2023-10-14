@@ -27,9 +27,9 @@ print(cube)
 
 #przykład 3
 
-def rejestracja(oplata):
-    def lista_zawodnikow(nrlisty):
-        return f'jesteś na liście zawodników nr {nrlisty}'
+def rejestracja(oplata,*args):
+    def lista_zawodnikow():
+        return f'jesteś na liście zawodników nr {args[0]}'
 
     def brak():
         return "brak wpłaty, uzupełnij w ciągu 3 dni!"
@@ -44,6 +44,33 @@ def rejestracja(oplata):
     else:
         return error
 
-print(rejestracja(1)(356))
+print(rejestracja(1,665)())
 print(rejestracja(0)())
 print(rejestracja(23423)())
+
+#przykład 4 -> funkcja typu wrapper (prosty dekorator)
+
+def startstop(funkcja):
+    def wrapper(*args):
+        print("uruchomienie nowej funkcji...")
+        funkcja(*args)
+        print("działanie funkcji zakończone!")
+    return wrapper
+
+def zawijanie(czego):
+    print(f'zawijanie {czego} w sreberka...')
+print("_"*40)
+
+zw = startstop(zawijanie)
+zw("czekoladek")
+print("_"*40)
+zawijanie("cukierków")
+
+print("_"*40)
+
+@startstop
+def dmuchanie(czego):
+    print(f"dmuchanie {czego} na torcie urodzinowym!")
+    
+
+dmuchanie("świeczek")
