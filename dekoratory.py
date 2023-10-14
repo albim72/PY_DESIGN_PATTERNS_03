@@ -45,3 +45,20 @@ def msg(i):
     print(f'ważna informacja: {i}')
 
 msg("kod - 3495869043")
+
+#przykład 3
+
+def repeater(n):
+    def wrapper(funkcja):
+        def inner(*args):
+            for i in range(n):
+                funkcja(*args)
+        return inner
+    return wrapper
+
+
+@repeater(n=7)
+def hx(n):
+    print((n-1)**7)
+
+hx(9)
