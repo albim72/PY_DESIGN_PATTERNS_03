@@ -24,3 +24,26 @@ print(parzyste)
 
 cube = list(map(lambda a:a**3,liczba))
 print(cube)
+
+#przykład 3
+
+def rejestracja(oplata):
+    def lista_zawodnikow(nrlisty):
+        return f'jesteś na liście zawodników nr {nrlisty}'
+
+    def brak():
+        return "brak wpłaty, uzupełnij w ciągu 3 dni!"
+
+    def error():
+        return "błąd systemu rozliczeniowego... powótrz wpłatę"
+
+    if oplata == 1:
+        return lista_zawodnikow
+    elif oplata == 0:
+        return brak
+    else:
+        return error
+
+print(rejestracja(1)(356))
+print(rejestracja(0)())
+print(rejestracja(23423)())
