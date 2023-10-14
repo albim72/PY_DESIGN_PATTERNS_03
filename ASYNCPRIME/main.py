@@ -1,17 +1,10 @@
 import time
 import concurrent.futures
-from funkcja_prime import znajdz_sume_liczb_pierwszych
+from funkcja_prime import znajdz_sume_liczb_pierwszych,pomiarczasu
 
 numbers = [(1,10_000),(3,50_000),(5_000,100_000),(4,900),(8_000,15_000),(95_000,133_000)]
 
-def pomiarczasu(funkcja):
-    def wrapper():
-        starttime = time.perf_counter()
-        funkcja()
-        endtime = time.perf_counter()
-        wynik= endtime-starttime
-        print(wynik)
-    return wrapper
+
 
 def run_heavy_function(params):
     return znajdz_sume_liczb_pierwszych(*params)
