@@ -1,3 +1,15 @@
+import time
+
+def pomiarczasu(funkcja):
+    def wrapper(*args):
+        starttime = time.perf_counter()
+        funkcja(*args)
+        endtime = time.perf_counter()
+        wynik= endtime-starttime
+        print(wynik)
+    return wrapper
+
+#@pomiarczasu
 def znajdz_sume_liczb_pierwszych(minimum,maksimum):
     total = 0
     for number in range(minimum,maksimum):
