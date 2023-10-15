@@ -1,9 +1,9 @@
 from abstract_a import AbstractProductA
 
-class ConreteProductA1(AbstractProductA):
+class ConcreteProductA1(AbstractProductA):
     def useful_function_a(self) -> str:
         return "wynik: produkt A1!"
-    
-class ConcereteProductA2(AbstractProductA):
+
+class ConcreteProductA2(AbstractProductA):
     def useful_function_a(self) -> str:
         return "wynik: produkt A2!"
