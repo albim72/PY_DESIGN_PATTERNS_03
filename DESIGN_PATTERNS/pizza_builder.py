@@ -44,7 +44,7 @@ class MargaritaBuilder:
 
     def add_topping(self):
         topping_desc = 'podwójna mozarella, oregano'
-        topping_items = (PizzaTopping.double_mozarella, PizzaTopping.oregno)
+        topping_items = (PizzaTopping.double_mozarella, PizzaTopping.oregano)
         print(f'adding the topping ({topping_desc}) to Your Margarita!')
         self.pizza.topping.append([t for t in topping_items])
         time.sleep(STEP_DELAY)
@@ -80,7 +80,7 @@ class CreamyBaconBuilder:
                          PizzaTopping.ham,
                          PizzaTopping.mushrooms,
                          PizzaTopping.red_onion,
-                         PizzaTopping.oregno)
+                         PizzaTopping.oregano)
         print(f'adding the topping ({topping_desc}) to Your Creamy Bacon!')
         self.pizza.topping.append([t for t in topping_items])
         time.sleep(STEP_DELAY)
@@ -108,7 +108,7 @@ class Waiter:
     @property
     def pizza(self):
         return self.builder.pizza
-    
+
 def validate_style(builders):
     try:
         input_msg = 'What pizza would You like? [m]argarita or [c]reamy bacon?'
@@ -118,3 +118,22 @@ def validate_style(builders):
         error_msg = 'Sorry, only [m]argarita or [c]reamy bacon!'
         return (False,error_msg)
     return (True,builder)
+
+def main():
+    builders = dict(m = MargaritaBuilder,c=CreamyBaconBuilder)
+    valid_input = False
+    while not valid_input:
+        valid_input,builder = validate_style(builders)
+        if valid_input == False:
+            print(builder)
+
+    print("\n")
+    waiter = Waiter()
+    waiter.construct_pizza(builder)
+    pizza = waiter.pizza
+
+    print("\n")
+    print(f'Enjoy Your {pizza}!')
+
+if __name__ == '__main__':
+    main()
