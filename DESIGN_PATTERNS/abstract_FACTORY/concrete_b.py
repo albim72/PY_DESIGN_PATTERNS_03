@@ -8,8 +8,8 @@ class ConcreteProductB1(AbstractProductB):
     def another_useful_function_b(self, collaborator: AbstractProductA) -> None:
         result = collaborator.useful_function_a()
         return f'wynik dla B1: {result}'
-    
-    
+
+
 class ConcreteProductB2(AbstractProductB):
     def useful_function_b(self) -> str:
         return "wynik: produkt B2"
