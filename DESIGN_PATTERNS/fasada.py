@@ -62,11 +62,25 @@ class ProcessServer(Server):
 
     def create_process(self, user, name):
         print(f"próba utworzenia procesu: {name} dla użytkownika: {user}")
-        
-        
+
+
 class WindowServer:
     pass
 
 class NetworkServer:
     pass
+
+class OperatingSystem:
+    def __init__(self):
+        self.fs = FileServer()
+        self.ps = ProcessServer()
+        
+    def start(self):
+        [i.boot() for i in (self.fs,self.ps)]
+        
+    def create_file(self,user,name,permission):
+        return self.fs.create_file(user,name,permission)
+    
+    def create_process(self,user,name):
+        return self.ps.create_process(user,name)
 
