@@ -18,7 +18,7 @@ def error(self):
 class SednoOdpowiedzi(type):
     def __init__(cls,clsname,bases,attrs):
         if required:
-            if clsname == "Kopernik":
+            if attrs.get('n'):
                 cls.odpowiedz = odpowiedz_new
             else:
                 cls.odpowiedz = odpowiedz_old
@@ -35,10 +35,10 @@ class SwTomasz(metaclass=SednoOdpowiedzi):
     pass
 
 class Kopernik(metaclass=SednoOdpowiedzi):
-    pass
+    n = True
 
 class Einstein(metaclass=SednoOdpowiedzi):
-    pass
+    n = True
 
 fil1 = Arytoteles()
 print(f'Filozof {fil1.__class__.__name__} twierdzi: {fil1.odpowiedz()}')
