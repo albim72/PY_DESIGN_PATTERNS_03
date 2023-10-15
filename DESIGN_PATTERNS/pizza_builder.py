@@ -41,7 +41,7 @@ class MargaritaBuilder:
         self.pizza.sauce = PizzaSouce.tomato
         time.sleep(STEP_DELAY)
         print('Done with the tomato sauce!')
-        
+
     def add_topping(self):
         topping_desc = 'podwójna mozarella, oregano'
         topping_items = (PizzaTopping.double_mozarella, PizzaTopping.oregno)
@@ -49,9 +49,45 @@ class MargaritaBuilder:
         self.pizza.topping.append([t for t in topping_items])
         time.sleep(STEP_DELAY)
         print(f'done with the topping ({topping_desc})')
-        
+
     def bake(self):
         self.progress = PizzaProgress.baking
         print(f'baking Your Margarita for {self.baking_time} s')
         time.sleep(self.baking_time)
         print('Your Margrita is ready!!!')
+
+
+class CreamyBaconBuilder:
+    def __init__(self):
+        self.pizza = Pizza('Creamy Bacon')
+        self.progress = PizzaProgress.queue
+        self.baking_time = 7
+
+    def prepare_dough(self):
+        self.progress = PizzaProgress.preparation
+        self.pizza.prepare_dough(PizzaDough.thick)
+
+    def add_sauce(self):
+        print(f'adding garlic sauce to Your Creamy Bacon!')
+        self.pizza.sauce = PizzaSouce.garlic
+        time.sleep(STEP_DELAY)
+        print('Done with the garlic sauce!')
+
+    def add_topping(self):
+        topping_desc = 'mozarella, boczek, szynka, grzyby, czerwona cebula, oregano'
+        topping_items = (PizzaTopping.mozarella,
+                         PizzaTopping.bacon,
+                         PizzaTopping.ham,
+                         PizzaTopping.mushrooms,
+                         PizzaTopping.red_onion,
+                         PizzaTopping.oregno)
+        print(f'adding the topping ({topping_desc}) to Your Creamy Bacon!')
+        self.pizza.topping.append([t for t in topping_items])
+        time.sleep(STEP_DELAY)
+        print(f'done with the topping ({topping_desc})')
+
+    def bake(self):
+        self.progress = PizzaProgress.baking
+        print(f'baking Your Creamy Bacon for {self.baking_time} s')
+        time.sleep(self.baking_time)
+        print('Your Creamy Bacon is ready!!!')
