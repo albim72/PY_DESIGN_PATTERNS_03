@@ -62,4 +62,11 @@ class ProcessServer(Server):
 
     def create_process(self, user, name):
         print(f"próba utworzenia procesu: {name} dla użytkownika: {user}")
+        
+        
+class WindowServer:
+    pass
+
+class NetworkServer:
+    pass
 
