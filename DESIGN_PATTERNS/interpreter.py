@@ -63,7 +63,7 @@ class Heating:
     def turn_off(self):
         print('turning off the air heating')
         self.is_on = False
-        
+
 class Boiler:
     def __init__(self):
         self.temperature = 47
@@ -78,8 +78,8 @@ class Boiler:
     def decrease_temperature(self, amount):
         print(f"decreasing the boiler's temperature by {amount} degrees")
         self.temperature -= amount
-        
-        
+
+
 class Fridge:
     def __init__(self):
         self.temperature = 2
@@ -94,3 +94,27 @@ class Fridge:
     def decrease_temperature(self, amount):
         print(f"decreasing the fridges's temperature by {amount} degrees")
         self.temperature -= amount
+        
+if __name__ == '__main__':
+    word = Word(alphanums)
+    command = Group(OneOrMore(word))
+    token = Suppress("->")
+    device = Group(OneOrMore(word))
+    argument = Group(OneOrMore(word))
+    event = command + token + device + Optional(token + argument)
+    
+    gate = Gate()
+    garage = Garage()
+    airco = Aircondition()
+    heating = Heating()
+    boiler = Boiler()
+    fridge = Fridge()
+    
+    
+    tests = ('open -> gate',
+             'close -> garage',
+             'turn on -> air condition',
+             'turn off -> heating',
+             'increase -> boiler temperature -> 5 degrees',
+             'decrease -> fridge temperature -> 2 degrees')
+    
