@@ -74,13 +74,21 @@ class OperatingSystem:
     def __init__(self):
         self.fs = FileServer()
         self.ps = ProcessServer()
-        
+
     def start(self):
         [i.boot() for i in (self.fs,self.ps)]
-        
+
     def create_file(self,user,name,permission):
         return self.fs.create_file(user,name,permission)
-    
+
     def create_process(self,user,name):
         return self.ps.create_process(user,name)
 
+def main():
+    os = OperatingSystem()
+    os.start()
+    os.create_file('abc','helloX','-rw-r-r')
+    os.create_process('bars','ls/temp')
+
+if __name__ == '__main__':
+    main()
